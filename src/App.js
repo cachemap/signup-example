@@ -1,23 +1,67 @@
-import logo from "./logo.svg";
+import React from "react";
 import "./App.scss";
 
 function App() {
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const [checkPassword, setCheckPassword] = React.useState("");
+
+  const passwordsMatch = password === checkPassword;
+  const passwordAttempted = password !== "" && checkPassword !== "";
+
+  const canSubmit = passwordsMatch && passwordAttempted && email.includes("@");
+
+  const onSubmit = (e) => {
+    e.preventDefault(); // Don't refresh the page
+
+    // Make an API request
+  };
+
+  // HOF for DRYness
+  const buildOnChange = (setState) => (e) => setState(e.target.value);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <form onSubmit={onSubmit}>
+        <div className="login-container">
+          <section>
+            <label name="email">
+              <span>Email</span>
+              <input
+                value={email}
+                name="email"
+                onChange={buildOnChange(setEmail)}
+              />
+            </label>
+            <label>
+              <span>Password</span>
+              <input
+                value={password}
+                name="password"
+                onChange={buildOnChange(setPassword)}
+              />
+            </label>
+            <label>
+              <span>Check Password</span>
+              <input
+                value={checkPassword}
+                name="checkPassword"
+                onChange={buildOnChange(setCheckPassword)}
+              />
+            </label>
+          </section>
+
+          <div className="submit-button-area">
+            {passwordAttempted && !passwordsMatch && (
+              <p>Passwords do not match.</p>
+            )}
+            {passwordAttempted && passwordsMatch && <p>Passwords match!</p>}
+            <button disabled={!canSubmit} type="submit">
+              Sign Up
+            </button>
+          </div>
+        </div>
+      </form>
     </div>
   );
 }

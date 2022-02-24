@@ -1,38 +1,135 @@
 .App {
-  text-align: center;
-}
+  form {
+    background-color: lightgray;
+    min-height: 100vh;
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+  div.login-container {
+    background: goldenrod;
+    width: 200px;
+
+    height: 24rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    padding: 30px 45px;
+
+    section {
+      height: 40%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+
+      label {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+
+        margin-bottom: 15px;
+      }
+
+      label span {
+        flex: 2;
+        align-self: flex-start;
+      }
+
+      input {
+        height: 1.5rem;
+        font-size: 1rem;
+
+        border-radius: 4px;
+        border: 1px solid gray;
+      }
+    }
+  }
+
+  .submit-button-area {
+    display: flex;
+    flex-direction: column;
+
+    > * {
+      width: 100%;
+    }
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+button {
+  cursor: pointer;
+  height: 35px;
+  border-radius: 8px;
+
+  color: black;
+  background-color: gold;
+  outline: none;
+  border-color: transparent;
+
+  box-shadow: 0px 3px 6px #222;
+
+  &:hover &:not(:disabled) {
+    box-shadow: 0px 2px 4px #222;
+    color: #333;
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    color: gray;
+    filter: brightness(0.8);
+    cursor: not-allowed;
+  }
 }
 
-.App-link {
-  color: #61dafb;
+/**
+ * 1. Change the font styles in all browsers.
+ * 2. Remove the margin in Firefox and Safari.
+ */
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  line-height: 1.15; /* 1 */
+  margin: 0; /* 2 */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/**
+  * Show the overflow in IE.
+  * 1. Show the overflow in Edge.
+  */
+
+button,
+input {
+  /* 1 */
+  overflow: visible;
+}
+
+/**
+  * Remove the inheritance of text transform in Edge, Firefox, and IE.
+  * 1. Remove the inheritance of text transform in Firefox.
+  */
+
+button,
+select {
+  /* 1 */
+  text-transform: none;
+}
+
+/**
+  * Correct the inability to style clickable types in iOS and Safari.
+  */
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
 }
