@@ -25,7 +25,7 @@ function App() {
       <form onSubmit={onSubmit}>
         <div className="login-container">
           <section>
-            <label name="email">
+            <label>
               <span>Email</span>
               <input
                 value={email}
