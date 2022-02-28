@@ -1,6 +1,17 @@
 import React from "react";
 import "./App.scss";
 
+const Input = ({ label, setter, ...props }) => {
+  const onChange = (e) => setter(e.target.value);
+
+  return (
+    <label>
+      <span>{label}</span>
+      <input {...props} onChange={onChange} />
+    </label>
+  );
+};
+
 function App() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
@@ -17,38 +28,31 @@ function App() {
     // Make an API request
   };
 
-  // HOF for DRYness
-  const buildOnChange = (setState) => (e) => setState(e.target.value);
-
   return (
     <div className="App">
       <form onSubmit={onSubmit}>
         <div className="login-container">
           <section>
-            <label>
-              <span>Email</span>
-              <input
-                value={email}
-                name="email"
-                onChange={buildOnChange(setEmail)}
-              />
-            </label>
-            <label>
-              <span>Password</span>
-              <input
-                value={password}
-                name="password"
-                onChange={buildOnChange(setPassword)}
-              />
-            </label>
-            <label>
-              <span>Check Password</span>
-              <input
-                value={checkPassword}
-                name="checkPassword"
-                onChange={buildOnChange(setCheckPassword)}
-              />
-            </label>
+            <Input
+              label="Email"
+              name="email"
+              value={password}
+              setter={setEmail}
+            />
+
+            <Input
+              label="Password"
+              name="password"
+              value={password}
+              setter={setPassword}
+            />
+
+            <Input
+              label="Check Password"
+              name="checkPassword"
+              value={checkPassword}
+              setter={setCheckPassword}
+            />
           </section>
 
           <div className="submit-button-area">
