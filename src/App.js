@@ -33,12 +33,7 @@ function App() {
       <form onSubmit={onSubmit}>
         <div className="login-container">
           <section>
-            <Input
-              label="Email"
-              name="email"
-              value={password}
-              setter={setEmail}
-            />
+            <Input label="Email" name="email" value={email} setter={setEmail} />
 
             <Input
               label="Password"
